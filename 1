@@ -1,0 +1,59 @@
+#include<iostream>
+
+using namespace std;
+
+int main(){
+
+    int n ;
+    while(cin >> n){///輸入 n
+
+        int box[n] , student[n] ;
+
+        for(int i = 0 ; i < n ; i++){///input box arry
+            cin>>box[i] ;
+        }
+
+        for(int i = 0 ; i < n ; i++){///input student arry
+            cin>>student[i] ;
+        }
+
+        int I , f = 0 ;///I當下的i，f 失敗次數
+
+        for(int i = 0 ; i < n ; ){///
+            if(box[i] != student[i]){///unmatch
+                int t = student[i] ;
+                int s = i ;
+
+                for(s ; s < n-1 ; s++){
+                    student[s] = student[s+1] ;
+                }
+                student[n-1] = t ;///24-30：第一個排到最後一個
+
+                /*for(int u = i ; u < n ; u++){
+                    cout<<student[u]<<" " ;
+                }
+                cout<<endl;*/
+
+                f++ ;///失敗次數+1
+
+                if(f == n-i){///已經輪了一圈了，還是無法配對的話，就代表已經配對不了了
+                    I = i;///記錄當下位置
+                    break;
+                }
+
+            }else{///match
+                f = 0 ;///將失敗次數歸零
+                i++ ;///當下位置往前一格
+                I = i ;///一樣要記錄當下位置
+            }
+        }
+
+        cout<<n-I<<endl ;
+        /*ex 如果當下的位置是2，
+        xx01
+        xx11
+          ^
+        那麼剛好4(總數)-2(當下位置)就是幾個人吃不到
+        */
+    }
+}
