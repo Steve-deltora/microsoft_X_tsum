@@ -1,0 +1,32 @@
+#include<iostream>
+
+using namespace std;
+
+int main(){
+    char
+    sentence1[11][14] =///words,length
+    {"This","is","the","introductory",
+    "information","of","new","word",
+    "search","engine","PollyHop"},
+    key1[5] = {"in"};///key word
+
+    char
+    sentence2[11][14] =///words,length
+    {"sed","condimentum","aliquet","tortor",
+    "convallis","dignissim"},
+    key2[5] = {"con"};///key word
+
+    int n =0;
+    for(int i = 0 ; i<5 ; i++){///counting key words length
+        if(key2[i] != '\0'){
+            n++ ;
+        }
+    }
+
+    for(int i =0 ; i<11 ; i++){///the number of the word now
+        for(int j =0 ; j<n ; j++){///check the chars one by one
+            if(sentence2[i][j] != key2[j]) break;///if key word isn't match the word,then break to check next word
+            if(j == n-1) cout<<sentence2[i]<<" ";///if all match,then output
+        }
+    }
+}
